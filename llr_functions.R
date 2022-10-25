@@ -7,7 +7,7 @@ compute_f_hat = function(z,x,y,omega){
   Wz <- make_weight_matrix(z,x,omega)
   X = make_predictor_matrix(x)
   Y = as.matrix(y)
-  f_hat = c(1,z) %*% solve(t(X) %*% apply(X,2,'*',Wz) ) %*% t(X) %*% apply(Y,2,'*',Wz)
+  f_hat = c(1,z) %*% solve(t(X) %*% sweep(X,2,Wz,'*')) %*% t(X) %*% apply(Y,2,'*',Wz)
   return (f_hat)
 }
 
