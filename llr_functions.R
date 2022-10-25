@@ -16,7 +16,7 @@ cal_W = function(xi,z,omega){
     W_r = (1 - (abs(r)^3))^3
     return (W_r)
   }
-  return( as.double(rep(1e7,each = length(z))))
+  return( as.double(rep(1e-7,each = length(z))))
 }
 make_weight_matrix = function(z,x,omega){
   vector = lapply(x,cal_W,z=z,omega = omega)
