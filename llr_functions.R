@@ -10,8 +10,18 @@ compute_f_hat = function(z,x,y,omega){
   return (f_hat)
 }
 
+cal_W = function(xi,z,omega){
+  r = abs(xi-z)/omega
+  if (abs(r)<1){
+    W_r = (1 - (abs(r)^3))^3
+    return (W_r)
+  }
+  return( as.double(rep(1e7,each = length(z))))
+}
 make_weight_matrix = function(z,x,omega){
-  Wz = diag(abs(x -z) /omega)
+  vector = lapply(x,cal_W,z=z,omega = omega)
+  Wz = diag(vector)
+  #Wz = c(abs(x-z)/omega)
   return (Wz)
 }
 
