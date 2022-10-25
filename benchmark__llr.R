@@ -1,4 +1,4 @@
-context("Benchmark local linear regression function")
+#context("Benchmark local linear regression function")
 source("llr_functions.R")
 
 library(microbenchmark)
